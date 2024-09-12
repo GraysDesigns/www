@@ -1,0 +1,88 @@
+<html>
+    <head><title>Hello World</title></head>
+    <body>
+        <script>
+
+            //iterating through array
+
+            haystack = new Array()
+            haystack[4] = "Needle"
+            haystack[11] = "Needle"
+            haystack[17] = "Needle"
+
+            for (i=0;i<20;++i)
+            {
+                if (haystack[i] == "Needle")
+                {
+                    document.write("<br>- Found at location " + i + "<br>")
+                    continue
+                }
+                else document.write(i + ", ")
+            }
+
+            //Returning an array
+
+            document.write("<hr> Returning an Array:<br>")
+            words = fixNames("the", "Dallas", "CowBoys")
+
+            for (j=0; j<words.length ; ++j)
+                document.write(words[j] + "<br>")
+
+            document.write(words[0] + " " + words[2])
+
+            function fixNames()
+            {
+                var s = new Array()
+
+                for (j=0;j<fixNames.arguments.length;++j)
+                    s[j] = fixNames.arguments[j].charAt(0).toUpperCase() + fixNames.arguments[j].substr(1).toLowerCase()
+
+                return s
+            }
+
+            //declaring a class
+
+            document.write("<hr> Declaring a class:<br>")
+            
+            function User(forename, username, password)
+            {
+                this.forename = forename
+                this.username = username
+                this.password = password
+                this.showUser = showUser
+            }
+
+            function showUser()
+            {
+                document.write("<br>Forename: " + this.forename + "<br>")
+                document.write("Username: " + this.username + "<br>")
+                document.write("Password: " + this.password + "<br>")
+            }
+
+            //two options to create an instance
+            //all at once:
+            user1 = new User("Haruki", "HMurakami", "C@ts&C!gs")
+            user1.showUser()
+
+            //or create an empty object and populate later:
+            user2 = new User()
+            user2.forename = "Carl"
+            user2.username = "CWheezie"
+            user2.password = "Cwoissant" 
+
+            //can also add new properties to object:
+            user2.motto = "Jimmy's maaahhhmm"
+            user2.showUser()
+
+            document.write("Motto: " + user2.motto)
+
+            //prototype keyword
+            //saves memory, 
+
+
+        </script>
+        <noscript>
+            Your browser doesn't support or has disabled JavaScript
+        </noscript>
+    </body>
+</html>
