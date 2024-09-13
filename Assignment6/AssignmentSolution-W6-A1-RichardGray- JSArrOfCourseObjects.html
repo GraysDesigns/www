@@ -1,0 +1,64 @@
+<html></html>
+    <head><title>Hello World</title></head>
+    <body>
+        <script>
+            function Course(courseCode, courseTitle, creditHours)
+            {
+                this.courseCode = courseCode
+                this.courseTitle = courseTitle
+                this.creditHours = creditHours
+            }
+            Course.prototype.printCourse = function()
+            {
+                document.write( "Code = " +         this.courseCode + "<br>" + 
+                                "Title = " +        this.courseTitle + "<br>" + 
+                                "Credit Hours = " + this.creditHours + "<br><br>")
+            }
+
+            var myCourses = new Array (
+                new Course("CMSC 340", "Web Programming", 3),
+                new Course("CMSC 315", "Data Structures and Analysis", 3),
+                new Course("CMSC 325", "Game Design and Development", 3),
+                new Course("CMST 325", "Image Editing", 3),
+                new Course("CMST 385", "Principles of Web Design & Technology I", 3),
+                new Course("CMST 311", "Advanced Electronic Publishing", 3),
+                new Course("CMST 315", "Game Design I", 3),
+                new Course("CMST 320", "Illustration Graphics", 3),
+                new Course("NUTR 100", "Elements of Nutrition", 3),
+                new Course("ANTH 102", "Intro to Cultural Anthropology", 3),
+                new Course("CMST 308", "User Experience Interface Design", 3),
+                new Course("CMST 310", "Fundamentals of Electronic Publishing", 3)
+            )
+
+            var totalCredits = 0;
+            var takenCMSC115 = false;
+
+            document.write("The number of courses I've taken over the last 3 terms: " + myCourses.length + "<br><br>")
+
+            for (var i=0;i<myCourses.length;i++)
+            {
+                document.write("Course " + (i+1) + " Information: <br>")
+                myCourses[i].printCourse()
+                totalCredits += myCourses[i].creditHours
+                if (myCourses[i].courseCode === "CMSC 115")
+                {
+                    takenCMSC115 = true
+                }
+            }
+
+            if(takenCMSC115)
+            {
+                document.write("Yes, I have taken the CMSC 115 course")
+            }
+            else
+            {
+                document.write("No, I have not taken the CMSC 115 course")
+            }
+            
+
+        </script>
+        <noscript>
+            Your browser doesn't support or has disabled JavaScript
+        </noscript>
+    </body>
+</html>
