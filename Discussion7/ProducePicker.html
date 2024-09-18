@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produce Selection</title>
+    <script>
+        // Define the Produce constructor
+        function Produce(name, cost) {
+            this.name = name;
+            this.cost = cost;
+        }
+
+        // Create an array of produce items
+        var produceList = [
+            new Produce("Apple", 2),
+            new Produce("Orange", 3),
+            new Produce("Lemon", 1)
+        ];
+
+        // Function to populate the select dropdown
+        function populateSelect() {
+            var produceSelect = document.getElementById('produce-select');
+            produceList.forEach(function(produce, index) {
+                // Create an option element
+                var option = document.createElement('option');
+                option.value = index;  // Use the index to reference the produce item
+                option.textContent = produce.name;
+                
+                // Append the option to the select dropdown
+                produceSelect.appendChild(option);
+            });
+        }
+
+        // Initialize total cost
+        var totalCost = 0;
+
+        // Function to add to cart and calculate total
+        function addToCart() {
+            var produceSelect = document.getElementById('produce-select');
+            var selectedIndex = produceSelect.value;
+            if (selectedIndex !== "") {
+                var selectedProduce = produceList[selectedIndex];
+                totalCost += selectedProduce.cost;
+                document.getElementById('total').textContent = "Total: $" + totalCost;
+            }
+        }
+
+        // Populate the select dropdown once the page loads
+        window.onload = populateSelect;
+    </script>
+</head>
+<body>
+    <h1>Produce Selection</h1>
+    
+    <!-- Dropdown for produce items -->
+    <select id="produce-select" onchange="addToCart()">
+        <option value="" disabled selected>Select a produce item</option>
+        <!-- Options will be dynamically inserted here -->
+    </select>
+    
+    <h2 id="total">Total: $0</h2>
+</body>
+</html>

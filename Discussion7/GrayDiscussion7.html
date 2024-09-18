@@ -1,0 +1,68 @@
+<html lang="en">
+    <head>
+        <title>Course Selector</title>
+        <script>
+            function Course(courseCode, creditHours)
+            {
+                this.courseCode = courseCode
+                this.creditHours = creditHours
+            }
+
+            var courseList = [
+                new Course("CMSC 340", 3),
+                new Course("CMSC 315", 3),
+                new Course("CMSC 325", 3),
+                new Course("CMST 325", 3),
+                new Course("CMST 385", 3),
+                new Course("CMST 311", 3),
+                new Course("CMST 315", 3)
+            ];
+
+            function populateCourses()
+            {
+                var courseSelect = document.getElementById('course-select');
+                courseList.forEach(function(course, index) {
+
+                    var option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = course.courseCode;
+
+                    courseSelect.appendChild(option);
+                });
+            }
+
+            var totalCredits = 0;
+            
+
+            function addCourse() {
+                var courseSelect = document.getElementById('course-select');
+                var selectedIndex = courseSelect.value;
+                
+
+                if (selectedIndex != "") {
+                    var selectedCourse = courseList[selectedIndex];
+                    totalCredits += selectedCourse.creditHours;
+
+                    var selectedCoursesDiv = document.getElementById('selected-courses');
+                    var selectedCourseElement = document.createElement('p');
+                    selectedCourseElement.textContent = selectedCourse.courseCode;
+                    selectedCoursesDiv.appendChild(selectedCourseElement);
+                    
+                    document.getElementById('total').textContent = "Credit Hours Total: " + totalCredits;
+                }               
+            }
+
+            window.onload = populateCourses;
+        </script>
+    </head>
+    <body>
+        <select id="course-select" onchange="addCourse()">
+            <option value="" disabled selected>Select courses from below:</option>
+
+        </select>
+        <div id="selected-courses">
+            Selected courses:
+        </div>
+        <p id="total">Credit Hours Total: 0</p>
+    </body>
+</html>
