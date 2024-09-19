@@ -1,3 +1,4 @@
+//validate_function.js
 function validate(form)
 {
   fail  = validateForename(form.forename.value)
