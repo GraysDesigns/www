@@ -1,4 +1,9 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once 'login.php';
 require_once 'Course.php';
 require_once 'Validate.php';
@@ -129,8 +134,7 @@ _END;
 
 function fix_string($string)
 {
-  if (get_magic_quotes_gpc()) $string = stripslashes($string);
-    return htmlentities ($string);
+  return htmlentities ($string, ENT_QUOTES, 'UTF-8');
 }
 
 ?>

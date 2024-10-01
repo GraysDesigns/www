@@ -1,6 +1,6 @@
 <?php // login.php
 $host = 'localhost';    // Change as necessary
-$port = '3305';
+$port = '3306';
 $data = 'cmsc340'; // Change as necessary
 $user = 'root';         // Change as necessary
 $pass = 'mysql';        // Change as necessary

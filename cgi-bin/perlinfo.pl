@@ -1,4 +1,4 @@
-#!"C:/Program Files/Ampps/perl/bin/perl.exe"
+#!"/Applications/AMPPS/apps/perl/bin/perl"
 
 use HTML::Perlinfo;
 use CGI qw(header);

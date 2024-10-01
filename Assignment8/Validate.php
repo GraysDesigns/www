@@ -1,4 +1,4 @@
-<?php
+<?php //validate.php
 
 
 function validate_NoMoreThan9CreditHours($avail_Reg_Courses)

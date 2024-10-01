@@ -1,3 +1,4 @@
+//validate.js
 function validate(form)
 {
   fail = "";
@@ -15,10 +16,23 @@ function validate(form)
 
 function validate_NoMoreThan9CreditHours()
 {
-  return "";
+  var currentCreditHours = parseInt(document.getElementById("currentCreditHoursElementID").innerText, 10);
+  console.log("currentCreditHours = " + currentCreditHours);
+  if (currentCreditHours > 8) {
+    return "You cannot register for more than 9 credit hours per term";
+  }
+  else return "";
 }
 
 function validate_NotPreviouslyRegistered()
 {
+  var registeredCourses = document.getElementById("currentCoursesElementID").innerText.split("<br>");
+  var selectedCourse = document.getElementById("selectCourseElementID").value;
+
+  for (var i = 0; i < registeredCourses.length; i++) {
+    if (registeredCourses[i].trim().startsWith(selectedCourse)) {
+      return "You have already registered for " + selectedCourse;
+    }
+  }
   return "";
 }
